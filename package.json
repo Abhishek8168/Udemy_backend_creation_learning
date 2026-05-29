@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "node index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "keywords": [
     "udemy",
@@ -16,6 +17,10 @@
   "author": "Abhishek panchal",
   "license": "ISC",
   "devDependencies": {
+    "nodemon": "^3.1.14",
     "prettier": "3.8.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
   }
 }
