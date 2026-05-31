@@ -19,8 +19,8 @@ app.use(cors({
 
 
 // import the rotues after cors configurations
-import healthchekcRouter from "./routes/healthcheck.routes.js"
-app.use("/api/v1/healthcheck", healthchekcRouter);
+import healthChekcRouter from "./routes/healthcheck.routes.js"
+app.use("/api/v1/healthCheck", healthChekcRouter);
 
 
 app.get("/", (req, res) => {
