@@ -10,7 +10,7 @@ const userSchema = new Schema(
             default: {url: `https://placehold.co/200x200`, localPath: ``}
         },
         username: {
-            type: {String},
+            type: String,
             required: true,
             unique: true,
             lowercase: true,
@@ -58,11 +58,10 @@ const userSchema = new Schema(
 );
 
 // adding hooks
-userSchema.pre('save', async function(next){
-    if(!this.isModified('password')) return next()
+userSchema.pre('save', async function() {
+    if(!this.isModified('password')) return;
 
     this.password = await bcrypt.hash(this.password, 10)
-    next()
 });
 
 // adding methods

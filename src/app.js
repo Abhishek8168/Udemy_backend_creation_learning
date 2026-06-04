@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser"
 
 const app = express();
 
@@ -8,6 +9,7 @@ const app = express();
 app.use(express.json({limit: '16kb'})); // we are allowing frontend to send any json kind of data which is of limit 16kb
 app.use(express.urlencoded({extended: true, limit: "16kb"})); // accepting the data comming from url
 app.use(express.static("public")); // 
+app.use(cookieParser());
 
 // cors configurations
 app.use(cors({
@@ -20,7 +22,10 @@ app.use(cors({
 
 // import the rotues after cors configurations
 import healthChekcRouter from "./routes/healthcheck.routes.js"
+import authRouter from "./routes/auth.routes.js";
+
 app.use("/api/v1/healthCheck", healthChekcRouter);
+app.use("/api/v1/auth", authRouter);
 
 
 app.get("/", (req, res) => {
